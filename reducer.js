@@ -8,6 +8,14 @@ const reducer = (state, action) => {
         wordSet: new Set(wordArr),
       };
     }
+
+    case "SET_DISABLED_LETTERS": {
+      const { currentState, key } = action;
+      return {
+        ...state,
+        disabledLetters: [...state.disabledLetters, key],
+      };
+    }
     case "PRESSED_KEY": {
       const { currentState, key } = action;
       const { currentAttempt, board } = currentState;
@@ -34,16 +42,19 @@ const reducer = (state, action) => {
       const { currentState } = action;
       const { currentAttempt, board, wordSet, correctWord } = currentState;
 
+      const currentGuess = "";
+      for (let i = 0; i < 5; i++) {
+        const letter = board[currentAttempt.attempt][i].toLowerCase();
+        currentGuess += letter;
+
+        console.log(correctWord, currentGuess);
+      }
+
       if (currentAttempt.letter !== 5) {
         alert("Enter 5 letters");
         return {
           ...state,
         };
-      }
-
-      const currentGuess = "";
-      for (let i = 0; i < 5; i++) {
-        currentGuess += board[currentAttempt.attempt][i];
       }
 
       if (currentGuess === correctWord) {
@@ -85,7 +96,6 @@ const reducer = (state, action) => {
     case "PRESSED_BACKSPACE": {
       const { currentState } = action;
       const { currentAttempt, board } = currentState;
-      console.log(board);
 
       if (currentAttempt.letter >= 1) {
         const newBoard = [...board];
@@ -106,7 +116,7 @@ const reducer = (state, action) => {
     }
 
     default:
-      return state;
+      return { ...state };
   }
 };
 

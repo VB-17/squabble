@@ -3,7 +3,7 @@ import Letter from "./Letter";
 
 function Board() {
   return (
-    <div className="board">
+    <div className="board board__self">
       {" "}
       {Array.from(Array(6).keys()).map((val) => (
         <div key={val} className="row">

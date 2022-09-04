@@ -1,5 +1,5 @@
-import { GameStateProvider } from "../GameStateProvider";
 import "../styles/globals.css";
+import { GameStateProvider } from "../GameStateProvider";
 import reducer from "../reducer";
 import { initialState } from "../reducer";
 

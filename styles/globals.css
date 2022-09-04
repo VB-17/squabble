@@ -1,88 +1,228 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
+*{
+  margin: 0px;
+  padding:0px;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */
+:root{
+  --clr-primary: #2660A4;
+  --clr-offwhite: #EDF7F6;
+  --clr-orange: #DC136C;
+}
+
 
 body {
-  padding: 0%;
-  margin: 0%;
-  border: 2px red solid;
+  color: var(--clr-offwhite);
+  font-family: "Poppins", sans-serif
+}
 
+/*------------- Navbar ------------------------ */
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  align-items: center;
+}
+
+.navbar__title{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.navbar ul{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  list-style: none;
+}
+
+.navbar ul > * + * {
+  margin-left: 4rem;
+}
+
+.navbar li a {
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.navbar__cta{
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50rem;
+  background: var(--clr-orange);
+  color: var(--clr-offwhite);
+  cursor: pointer;
+  transition: all 0.2s,;
+}
+
+.navbar__cta:hover, 
+.navbar__cta:focus {
+  box-shadow: 0 0 0 2px var(--clr-primary), 0 0 0 4px #da3b42;
+}
+
+/* --------------------------- HomePage------------------------------------------- */
+.homepage{
+  min-height: 100vh;
+  background: var(--clr-primary);
+  /* background: rgb(4,3,3);
+  background: linear-gradient(150deg, rgba(4,3,3,1) 21%, rgba(43,42,42,1) 69%, rgba(78,77,77,1) 100%); */
+}
+
+.container{
+  width: 90%;
+  margin: auto;
+}
+
+
+/*------------------- Hero Section----------------- */
+.homepage__hero{
+
+}
+
+.hero{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 50%;
+  
+  margin-top: 10rem;
+
+}
+
+.hero h1{
+  font-size: 4.5rem;
+  line-height: 6rem;
+}
+
+.hero__cta{
+  align-self: flex-start;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem 3rem;
+  border-radius: 50rem;
+  background: var(--clr-orange);
+  cursor: pointer;
+  color: white;
+}
+
+.hero__cta:hover, 
+.hero__cta:focus {
+  box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px #da3b42;
+}
+
+/*--------------------------- squabble---------------------------------------------- */
+.game {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+
+  background: #000100;
+  color: white 
   
 }
 
-nav {
-  height: 60px;
-  width: 100%;
-  margin: 0;
-  border-bottom: 1px solid grey;
-  display: grid;
-  place-items: center;
+.game__left{
+  margin-block: auto;
 }
 
-nav h1 {
-  margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
-  color: white;
-  font-size: 45px;
+.game__right{
+  margin-block: auto;
 }
-.game {
-  width: 100vw;
-  height: calc(100vh - 170px);
+
+.board{
   display: flex;
-  align-items: center;
-  padding-top: 50px;
   flex-direction: column;
+  margin: auto;
+
 }
 
-.board {
+.board__opponent{
+  width: 350px;
+  height: 450px;
+}
+
+.board__self {
+  border: 2px white solid;
   width: 450px;
   height: 550px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
+  
 }
 
 .row {
-  flex: 33%;
   display: flex;
-  flex-direction: row;
-  margin: 5px;
+  margin: 8px;
+  gap: 8px;
+  flex: 1;
 }
 
 .letter {
-  flex: 33%;
-  height: 100%;
+  flex: 1;
   border: 1px solid grey;
-  margin: 5px;
   display: grid;
   place-items: center;
+
   font-size: 30px;
   font-weight: bolder;
-  color: black;
+  
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.keyboard {
+  margin-top: 3rem;
+}
+
+.keyboard > * + * {
+  margin-top: 8px;
+}
+
+.line {
+  /* border: 2px red solid; */
+  display: flex;
+  justify-content: center;
+}
+
+
+.key {
+
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+ 
+  width: 50px;
+  height: 50px;
+  color: #555;
+  cursor: pointer;
+  margin: 0 8px;
+  border: 1px #f2f2f2 solid;
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top, #f9f9f9 0%, #D2D2D2 80%, #c0c0c0 100%);
+  font-family: sans-serif;
+  
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(#444, 0.4), 2px 1px 4px rgba(#444, 0.25), -2px 1px 4px rgba(#444, 0.25), 0 9px 16px rgba(#444, 0.1);
+  
+}
+.key:hover,
+.key:focus {
+  box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 4px 0 #C0C0C0, 0 2px 35px rgba(#444, 0.3), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 7px 4px rgba(#444, 0.1);
+  transform: translateY(2px);
+}
+
+.key:active {
+  box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 0 0 #C0C0C0, 0 0px 30px rgba(#444, 0.15), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 0px 4px rgba(#444, 0.25);
+  transform: translateY(4px); 
+}
+
+#big {
+  width: fit-content;
+  padding-inline: 1rem;
 }
 
 #correct {
@@ -97,53 +237,9 @@ nav h1 {
   background-color: #3a393c;
 }
 
-.keyboard {
-  width: 700px;
-  height: 250px;
-  margin-top: 60px;
-}
 
-.line1 {
-  flex: 33%;
-  display: flex;
-  flex-direction: row;
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-}
-
-.line2 {
-  flex: 36%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 5px;
-}
-.line3 {
-  flex: 33%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 5px;
-}
-
-.key {
-  width: 50px;
-  height: 70px;
-  margin: 5px;
-  border-radius: 4px;
-  display: grid;
-  place-items: center;
-  font-size: 20px;
-  background-color: grey;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
-}
-
-#big {
-  width: 100px;
-}
 #disabled {
   background-color: #3a393c;
 }
+
+

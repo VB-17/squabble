@@ -1,22 +1,31 @@
 import React, { useEffect } from "react";
-import Board from "../../components/Board";
-import Keyboard from "../../components/Keyboard";
+import Board from "../../components/squabble/Board";
+import Keyboard from "../../components/squabble/Keyboard";
 import fs from "fs";
 import path from "path";
-import { useGameState } from "../../GameState";
+import { useGameState } from "../../GameStateProvider";
 
 function GameRoom({ correctWord, wordArr }) {
-  const [state, dispatch] = useGameState();
+  const [
+    {
+      gameState: { isGuessed, isGameOver },
+    },
+    dispatch,
+  ] = useGameState();
+
   useEffect(() => {
     dispatch({ type: "SET_WORDS", correctWord, wordArr });
-  }, [correctWord, wordArr]);
+  }, [correctWord, wordArr, dispatch]);
+
   return (
-    <div>
-      <h1>Squabble</h1>
-      <div>
+    <div className="game">
+      <div className="game__left">
         <Board />
         <Keyboard />
       </div>
+      <dir className="game__right">
+        <Board />
+      </dir>
     </div>
   );
 }
